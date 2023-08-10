@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f3f3;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .cash-register {
+    background-color: #ffccdd;
+    border: 2px solid #e57373;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+
+  .product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .product input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #e57373;
+    border-radius: 5px;
+    width: 60%;
+  }
+
+  .total {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.2rem;
+  }
+
+  .checkout-button {
+    background-color: #e57373;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+</style>
+<title>Sistema de Caja Registradora - Cafetería</title>
+</head>
+<body>
+  <div class="cash-register">
+    <h2>Cafetería - Caja Registradora</h2>
+    <div class="product">
+      <input type="text" placeholder="Producto 1">
+      <input type="number" placeholder="Precio">
+      <input type="number" placeholder="Cantidad">
+    </div>
+    <div class="product">
+      <input type="text" placeholder="Producto 2">
+      <input type="number" placeholder="Precio">
+      <input type="number" placeholder="Cantidad">
+    </div>
+    <div class="product">
+      <input type="text" placeholder="Producto 3">
+      <input type="number" placeholder="Precio">
+      <input type="number" placeholder="Cantidad">
+    </div>
+    <div class="product">
+      <input type="text" placeholder="Producto 4">
+      <input type="number" placeholder="Precio">
+      <input type="number" placeholder="Cantidad">
+    </div>
+    <div class="product">
+      <input type="text" placeholder="Producto 5">
+      <input type="number" placeholder="Precio">
+      <input type="number" placeholder="Cantidad">
+    </div>
+    
+    <div class="total" id="total">
+      Total: $0.00
+    </div>
+
+    <button class="checkout-button" onclick="calculateTotal()">Calcular Total</button>
+  </div>
+
+  <script>
+    function calculateTotal() {
+      const products = document.querySelectorAll('.product');
+      let total = 0;
+
+      products.forEach(product => {
+        const price = parseFloat(product.querySelector('input[type="number"][placeholder="Precio"]').value);
+        const quantity = parseFloat(product.querySelector('input[type="number"][placeholder="Cantidad"]').value);
+
+        if (!isNaN(price) && !isNaN(quantity)) {
+          total += price * quantity;
+        }
+      });
+
+      document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
+    }
+  </script>
+  <a href="index.html"><button> SOBRE MI</button></a>  
+  <a href="libre.html"><button> ESENCIA CAFE</button></a>
+</body>
+</html>
+
+
+
+
